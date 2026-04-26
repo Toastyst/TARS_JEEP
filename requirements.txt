@@ -1,0 +1,7 @@
+faster-whisper
+pyttsx3
+ollama
+sounddevice
+numpy
+av
+Cython
