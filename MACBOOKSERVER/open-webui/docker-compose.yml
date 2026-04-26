@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    ports:
+      - "3000:8080"
+    volumes:
+      - ./data:/app/backend/data
+    environment:
+      - WEBUI_PIPELINES_URL=http://pipelines:9099
+    restart: unless-stopped
+
+  pipelines:
+    image: ghcr.io/open-webui/pipelines:latest
+    ports:
+      - "9099:9099"
+    volumes:
+      - ./pipelines:/app/pipelines
+    restart: unless-stopped
+
+volumes:
+  pipelines:
